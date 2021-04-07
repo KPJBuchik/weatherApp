@@ -14,27 +14,169 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
 
 
 
 </head>
 
 <body>
-    <h1>cool weather</h1>
-    <input id="search"><button id="submit">Submit</button> 
-    <p id="results"></p>
-    <div id="weekly-forecast">
-    <img class="ribbon" src="./assets/ribbon.png">
-    <img class="ribbon"  src="./assets/ribbon.png">
-    <img class="ribbon"   src="./assets/ribbon.png">
-    <img class="ribbon" src="./assets/ribbon.png">
-    <img class="ribbon" src="./assets/ribbon.png">
-    <img class="ribbon" src="./assets/ribbon.png">
-    <img class="ribbon" src="./assets/ribbon.png">
-</div>
+    <!-- <h1>cool weather</h1>
+    <input id="search"><button id="submit">Submit</button>  -->
+    <div id="current">
+        <div id="location">
+            <h5 id="city">Pinetop, Arizona</h5> 
 
- 
+            <form id="search">
+                <input id="input" type="search" placeholder="Search">
+            </div>
+        <h2 id="temp">74˚</h2>
+        <img id="cloudy" class="weather-icon" src="assets/Cloudy.png">
+        <img id="sunny" class="weather-icon" src="assets/sunny.png">
+        <img id="rain" class="weather-icon" src="assets/rain.png">
+        <img id="clear-night" class="weather-icon" src="assets/clear-night.png">
+        <img id="cloudy-night" class="weather-icon" src="assets/cloudy-night.png">
+        <img id="snow" class="weather-icon" src="assets/snow.png">
+
+
+
+
+
+    </div>
+
+    <div class="backdrop">
+
+        <h3 id="conditions">Mostly Cloudy</h3>
+
+        <div id="squares">
+            <div class="square">
+                <p class="etc-weather">HUMIDITY</p>
+                <p id="humidity-results" class="etc-weather-results ">7</p>
+            </div>
+            <div class="square">
+                <p class="etc-weather">SUNRISE</p>
+                <p id="sunrise-results" class="etc-weather-results "></p>
+            </div>
+            <div class="square">
+                <p class="etc-weather">SUNSET</p>
+                <p id="sunset-results" class="etc-weather-results "></p>
+
+            </div>
+            <div class="square">
+                <p class="etc-weather">WIND</p>
+                <p id="wind-results" class="etc-weather-results "></p>
+
+            </div>
+        </div>
+        <div id="hi-lo">
+            H:
+            <br>
+            L:
+        </div>
+        <div id="weekly-forecast">
+            <div class="ribbon">
+                <p id="weekday1" class="weekday">Monday</p> 
+                <img  class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
+                <img  class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
+                <img  class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
+                <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
+                <img  class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+                
+                <img
+                
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+                    
+            <p  id="high1" class="high-forecast">84</p>
+            <p  id="low1" class="low-forecast">81</p>
+
+
+            </div>
+            <div class="ribbon">
+                <p id="weekday2" class="weekday">Monday</p> 
+                <img  class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
+                <img  class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
+                <img  class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
+                <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
+                <img  class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+
+                <img
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+                    <p id="high2" class="high-forecast">84</p>
+                    <p id="low2" class="low-forecast">81</p>
+
+            </div>
+            <div class="ribbon">
+                <p  id="weekday3" class="weekday">Monday</p> 
+                <img class="forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
+                <img  class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
+                <img  class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
+                <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
+                <img  class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+
+                <img
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+                    <p id="high3" class="high-forecast">84</p>
+                    <p id="low3" class="low-forecast">81</p>
+
+            </div>
+
+            <div class="ribbon">
+                <p id="weekday4" class="weekday">Monday</p> 
+                <img  class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
+                <img  class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
+                <img  class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
+                <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
+                <img  class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+
+                <img
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+                    <p id="high4" class="high-forecast">84</p>
+                    <p id="low4" class="low-forecast">81</p>
+            </div>
+            <div class="ribbon">
+                <p id="weekday5" class="weekday">Monday</p> 
+                <img  class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
+                <img  class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
+                <img  class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
+                <img  class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
+                <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
+                <img  class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+                <img
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+                    <p id="high5" class="high-forecast">84</p>
+                    <p id="low5" class="low-forecast">81</p>
+
+            </div>
+
+            <!-- <div class="ribbon">
+                <p class="weekday">Monday</p> <img class="forecast-icon" src="assets/tiny-sun.png"><img
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+
+            </div>
+
+            <div class="ribbon">
+                <p class="weekday">Monday</p> <img class="forecast-icon" src="assets/tiny-sun.png"> <img
+                    class="ribbon ribbon-image" src="./assets/ribbon.png">
+
+            </div> -->
+
+
+        </div>
+    </div>
+    <script type='text/javascript' src='config.js'></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script src="app.js"></script>
