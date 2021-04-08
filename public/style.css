@@ -1,7 +1,14 @@
 
 body{background-color:#E5FCFD;
-max-height:100vh;}
-#search input[type=search] {
+max-height:100vh;
+font-family:Barlow;
+}
+
+#city{margin-left:3vw;
+margin-top:-3vw;
+position: absolute;
+z-index:-3}
+/* #search input[type=search] {
 	width: 1.3vw;;
 	padding-left: 10px;
 	color: transparent;
@@ -71,9 +78,9 @@ input:-moz-placeholder {
 input::-webkit-input-placeholder {
 	color: #999;
 }
-
+ */
 #location{
-    display:flex;
+
 font-family:helvetica;
 position:relative;
 margin-left:38vw;
@@ -106,6 +113,7 @@ margin-left:38vw;}
     margin-right:.1vw;
 }  
 .weekday{position:absolute;
+    margin-left:1.3vw;
     z-index:3;
 font-size:1vh;}
 
@@ -117,15 +125,27 @@ display:none}
 .tiny-sunnny{display:initial}
 
 .high-forecast{
-position:absolute;
+    margin-left:1.8vw;
+    position:absolute;
 margin-top:6.5vh;
 }
 .low-forecast{
+    margin-left:1.8vw;
+
     position:absolute;
     margin-top:8.5vh;
     font-size:2vh;
     }
-.etc-weather{margin-left:.5vw;}
+.etc-weather{margin-left:.5vw;
+font-family:Barlow;
+font-size:2vh;
+margin-left:1vw;}
+.etc-weather-results{
+font-size:2vh;
+margin-left:2vw;
+font-family:Barlow;
+
+}
 
 
 
