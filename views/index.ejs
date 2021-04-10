@@ -14,37 +14,39 @@
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-    crossorigin="anonymous"></script>
+    crossorigin="anonymous"></script> -->
 
 
 
 </head>
 
 <body>
+
   <!-- <h1>cool weather</h1>
     <input id="search"><button id="submit">Submit</button>  -->
   <div id="toggle"><button id="dark-mode">toggle</button></div>
   <div id="current">
     <div id="location">
+
       <form action="/" method="post" id="search">
         <input name="city" id="input" type="search" placeholder="enter a city">
-        
-        <h5 id="city">Pinetop, Arizona</h5>
+
+        <h5 id="city"></h5>
 
     </div>
-
-
-    <h2 id="temp">      <p><%= weather %></p>
-</h2>
-
+    <% if(weather !== null){ %>
+      <p><%= weather %></p>
+    <% } %>
 
     <% if(error !== null){ %>
       <p><%= error %></p>
     <% } %>
-   
+    <h2 id="temp"></h2>
+
     <img id="cloudy" class="weather-icon" src="assets/Cloudy.png">
+    
     <img id="sunny" class="weather-icon" src="assets/sunny.png">
     <img id="rain" class="weather-icon" src="assets/rain.png">
     <img id="clear-night" class="weather-icon" src="assets/clear-night.png">
@@ -86,6 +88,7 @@
       <br>
       L:
     </div>
+
     <div id="weekly-forecast">
       <div class="ribbon">
         <p id="weekday1" class="weekday">Monday</p>

@@ -1,4 +1,3 @@
-var myKey = "385558a2e3a5c612b37f7a22119fe26d"
 
 // window.onload = function() {
 //    currentWeather()
