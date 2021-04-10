@@ -29,21 +29,20 @@
   <div id="toggle"><button id="dark-mode">toggle</button></div>
   <div id="current">
     <div id="location">
+      <% if(error !== null){ %>
+        <p><%= error %></p>
+      <% } %>
 
       <form action="/" method="post" id="search">
         <input name="city" id="input" type="search" placeholder="enter a city">
 
-        <h5 id="city"></h5>
-
     </div>
+  
     <% if(weather !== null){ %>
-      <p><%= weather %></p>
-    <% } %>
 
-    <% if(error !== null){ %>
-      <p><%= error %></p>
-    <% } %>
-    <h2 id="temp"></h2>
+      <h5 id="city"><%= weather[0] %></h5>
+
+    <h2 id="temp"><%= weather[1] %></h2>
 
     <img id="cloudy" class="weather-icon" src="assets/Cloudy.png">
     
@@ -66,28 +65,29 @@
     <div id="squares">
       <div class="square">
         <p class="etc-weather">HUMIDITY</p>
-        <p id="humidity-results" class="etc-weather-results ">7</p>
+        <p id="humidity-results" class="etc-weather-results "><%= weather[2] %></p>
       </div>
       <div class="square">
         <p class="etc-weather">SUNRISE</p>
-        <p id="sunrise-results" class="etc-weather-results "></p>
+        <p id="sunrise-results" class="etc-weather-results "><%= weather[3] %></p>
       </div>
       <div class="square">
         <p class="etc-weather">SUNSET</p>
-        <p id="sunset-results" class="etc-weather-results "></p>
+        <p id="sunset-results" class="etc-weather-results "><%= weather[4] %></p>
 
       </div>
       <div class="square">
         <p class="etc-weather">WIND</p>
-        <p id="wind-results" class="etc-weather-results "></p>
+        <p id="wind-results" class="etc-weather-results "><%= weather[5] %></p>
 
       </div>
     </div>
     <div id="hi-lo">
-      H:
+      H:<%= weather[6] %>
       <br>
-      L:
+      L:<%= weather[7] %>
     </div>
+    <% } %>
 
     <div id="weekly-forecast">
       <div class="ribbon">
