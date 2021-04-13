@@ -1,8 +1,10 @@
 const request = require('request');
+const axios = require('axios').default;
 
 const bodyParser = require('body-parser');
 require('dotenv').config()
 var express = require("express");
+var router = express.Router()
 
 var app = express();
 var PORT = process.env.PORT || 8081;
@@ -14,18 +16,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static('public'));
-
+app.use("/public", express.static(__dirname + "/pulblic/assets"));
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 
 });
 
+let currentArray = []
 
-app.get('/', function (req, res) {
+app.get('/',  function (req, res) {
     res.render('index', );
-});
+})
 
-app.post('/', function (req, res) {
+app.get('/future',  function (req, res) {
+    res.redirect('/');})
+
+
+app.post('/', async function (req, res,next) {
     let apiKey = process.env.MY_KEY
 
     let city = req.body.city;
@@ -43,32 +50,30 @@ app.post('/', function (req, res) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
 
-                let currentArray = []
 
                 let roundedTemp = `${Math.ceil(weather.main.temp)}` + "˚";
                 let location = `${(weather.name)}`
                 let humidity = `${Math.ceil(weather.main.humidity)}`
-
-
-
-                let timezone = weather.timezone
+                let condition = `${(weather.weather[0].main)}`
                 
- 
+                let timezone = weather.timezone
+
+                // display custom weather icons based on the icon number
+                let iconNumber = weather.weather[0].icon
+                var imgSrc = "/assets/" + iconNumber + '.png'; //this worked, just have to add duplicate pictures that correspond to the codes. 
                 let unixSunset = weather.sys.sunset;
                 const sunset = new Date((unixSunset + timezone) * 1000)
                 let sunsetHrs = sunset.getHours().toString();
                 let sunsetMinutes = sunset.getMinutes().toString();
-                let sunsetSeconds = sunset.getSeconds().toString();
       
                 let unixSunrise = weather.sys.sunrise;
                 const sunrise = new Date((unixSunrise + timezone) * 1000)
                 let sunriseHrs = sunrise.getHours()
            
                 let sunriseMinutes = sunrise.getMinutes()
-                let sunriseSeconds = sunrise.getSeconds().toString();
 
 
-                console.log(sunriseMinutes)
+                
 
                 //millitary time to standard time
                 let displaySunset;
@@ -81,15 +86,14 @@ app.post('/', function (req, res) {
                   displaySunset= "12";
                 }
                  
-                displaySunset += (sunsetMinutes < 10) ? ":0" + sunsetMinutes : ":" + sunsetMinutes;  // get minutes
+                displaySunset += (sunsetMinutes < 10) ? ":0" + sunsetMinutes : ":" + sunsetMinutes;  
                 if (sunsetMinutes.toString().length < 2){
                     sunsetMinutes = "0" + sunsetMinutes
                 }
 
                 displaySunset = sunsetHrs-5 + ":" +  sunsetMinutes
-                displaySunset += (sunsetHrs <= 12) ? " P.M." : " A.M.";  // get AM/PM
+                displaySunset += (sunsetHrs <= 12) ? " P.M." : " A.M.";  
 
-                console.log(displaySunset)
 
                 let displaySunrise; 
                 if (sunriseHrs > 0 && sunriseHrs <= 12) {
@@ -100,14 +104,13 @@ app.post('/', function (req, res) {
                   displaySunrise= "12";
                 }
                  
-                displaySunrise += (sunriseMinutes < 10) ? ":0" + sunriseMinutes : ":" + sunriseMinutes;  // get minutes
+                displaySunrise += (sunriseMinutes < 10) ? ":0" + sunriseMinutes : ":" + sunriseMinutes;  
                 if (sunriseMinutes.toString().length < 2){
                     sunriseMinutes = "0" + sunriseMinutes
                 }
                 displaySunrise = sunriseHrs-17+ ":" +  sunriseMinutes 
-                displaySunrise += (sunriseHrs <= 12) ? " P.M." : " A.M.";  // get AM/PM
+                displaySunrise += (sunriseHrs <= 12) ? " P.M." : " A.M.";  
 
-                console.log(sunriseMinutes.toString().length)
 
 
             
@@ -116,7 +119,6 @@ app.post('/', function (req, res) {
                 let highTemp = `${Math.ceil(weather.main.temp_max)}` + "˚";
                 let lowTemp = `${Math.ceil(weather.main.temp_min)}` + "˚";
                 let wind = `${(weather.wind.speed)}`
-                let condition = weather.weather[0].main
 
                 currentArray.push(location);
                 currentArray.push(roundedTemp);
@@ -127,13 +129,49 @@ app.post('/', function (req, res) {
                 currentArray.push(highTemp);
                 currentArray.push(lowTemp);
                 currentArray.push(condition)
+                currentArray.push(imgSrc)
               
-                res.render('index', { weather: currentArray, error: null });
+                res.render('index', { weather: currentArray,
+                     error: null });
+                next();
+            }
+
+        }
+
+    })
+}),
+
+
+app.post("/",  function (req, res, next) {
+    let apiKey = process.env.MY_KEY
+
+    let city = req.body.city;
+
+    let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKey}`
+
+    request(url,  function (err, response, body) {
+        if (err) {
+            res.render('/', { data: null, error: 'Error, please try again'});
+
+        } else {
+            let data = JSON.parse(body)
+            console.log("hey")
+
+
+            if (data.main !== undefined) {
+               return  res.render('/', { data: null, error: 'Error, please try again' });
+            } else {
+                let forecastDate = data.list[0].dt_txt;
+                currentArray.push(forecastDate)
+                console.log("hey")
+                console.log("date" + forecastDate)
+                console.log(currentArray)
+
+                next()
             }
         }
     });
 })
-
 
 
 

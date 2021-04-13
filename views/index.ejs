@@ -33,9 +33,9 @@
         <p><%= error %></p>
       <% } %>
 
-      <form action="/" method="post" id="search">
-        <input name="city" id="input" type="search" placeholder="enter a city">
 
+      <form action="/" method="post" id="search">
+        <input name="city" id="input" type="search" placeholder="enter a city" value="phoenix">
     </div>
   
     <% if(weather !== null){ %>
@@ -44,15 +44,9 @@
 
     <h2 id="temp"><%= weather[1] %></h2>
 
-    <img id="cloudy" class="weather-icon" src="assets/Cloudy.png">
+    <img  id="cloudy" class="weather-icon" src=<%= weather[9] %>>
+
     
-    <img id="sunny" class="weather-icon" src="assets/sunny.png">
-    <img id="rain" class="weather-icon" src="assets/rain.png">
-    <img id="clear-night" class="weather-icon" src="assets/clear-night.png">
-    <img id="cloudy-night" class="weather-icon" src="assets/cloudy-night.png">
-    <img id="snow" class="weather-icon" src="assets/snow.png">
-
-
 
 
 
@@ -83,15 +77,19 @@
       </div>
     </div>
     <div id="hi-lo">
-      H:<%= weather[6] %>
+      H:<%= weather[6] %>  <%= weather[10] %>
       <br>
       L:<%= weather[7] %>
-    </div>
-    <% } %>
 
-    <div id="weekly-forecast">
-      <div class="ribbon">
-        <p id="weekday1" class="weekday">Monday</p>
+    </div>
+
+   
+
+      <div id="weekly-forecast" action="2" method="post">
+        <div class="ribbon">
+          <p id="weekday1" class="weekday"> <%= weather[10] %></p>
+          <% } %>
+
         <img class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
         <img class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
         <img class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">

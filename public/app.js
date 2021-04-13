@@ -1,6 +1,5 @@
 
 // window.onload = function() {
-//    currentWeather()
 //    futureWeather()
 //   };
 var input = document.getElementById('input').value;
@@ -135,7 +134,7 @@ function toStandardTime(militaryTime) {
 
 // function futureWeather() {
 //     var input = document.getElementById('input').value;
-
+//     let myKey= "385558a2e3a5c612b37f7a22119fe26d"
 //     for (let i = 5; i < 40; i += 8) {
 
 
@@ -143,12 +142,12 @@ function toStandardTime(militaryTime) {
 
 //     $.ajax({
 //         url:apiKey,
-//         method:"GET",
+//         method:"POST",
 //     }).then(function (json) {
             
 
 
-//             // console.log(json)
+//             console.log(json)
 //             let forecastHigh = json.list[i].main.temp_max
 //             let forecastCondition = json.list[i].weather[0].main
 //             forecastHigh = Math.ceil(forecastHigh)
