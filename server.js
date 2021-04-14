@@ -23,9 +23,6 @@ app.listen(PORT, function () {
 
 let currentArray = []
 
-app.get('/',  function (req, res) {
-    res.render('index', );
-})
 
 
     var dayNames = [
@@ -40,13 +37,19 @@ app.get('/',  function (req, res) {
     ];
 
 
+    app.get('/',  function (req, res) {
+        res.render('index', );
+    })
 
 app.post('/', async function (req, res,next) {
     let apiKey = process.env.MY_KEY
 
-    let city = req.body.city;
+    let city = req.body.city
+    if (city === ""){
+        city="phoenix"
+    }
 
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=phoenix&units=imperial&appid=${apiKey}`
 
     request(url, function (err, response, body) {
         if (err) {
@@ -155,9 +158,12 @@ app.post('/', async function (req, res,next) {
 app.post("/",  function (req, res) {
     let apiKey = process.env.MY_KEY
 
-    let city = req.body.city;
+    let city = req.body.city
+    if (city === ""){
+        city="phoenix"
+    }
 
-    let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKey}`
+    let url = `http://api.openweathermap.org/data/2.5/forecast?q=phoenix&units=imperial&APPID=${apiKey}`
 
     request(url,  function (err, response, body){
         if (err) {
@@ -266,13 +272,7 @@ app.post("/",  function (req, res) {
     })    
   
 }),
-// app.post('/', function(req, res,next){
-//     hey.then(function(){
-//         currentArray.length=0
-//     }).catch(function(error){
-//         console.log("i dunno")
-//     });
-// });
+
 
 
 
@@ -282,19 +282,3 @@ app.post("/",  function (req, res) {
 
 console.log("MY_KEY: " + process.env.MY_KEY);
 
-// let apiKey = process.env.MY_KEY
-// let city = 'portland';
-// let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
-
-
-
-// request(url, function (err, response, body) {
-//     if (err) {
-//         console.log('error:', error);
-//     } else {
-//         let weather = JSON.parse(body)
-//         let message = `It's ${weather.list.temp_max} degrees in ${weather.name}!`;
-//         console.log(message);
-
-//     }
-// });
