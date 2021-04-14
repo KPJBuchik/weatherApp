@@ -16,7 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static('public'));
-app.use("/public", express.static(__dirname + "/pulblic/assets"));
 app.listen(PORT, function () {
     console.log("App listening on PORT " + PORT);
 
