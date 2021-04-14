@@ -4,6 +4,10 @@
   "description": "",
   "main": "config.js",
   "type": "module",
+  "engines": {
+    "node": "12.4.0"
+  },
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
