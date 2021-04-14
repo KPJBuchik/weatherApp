@@ -167,7 +167,6 @@ app.post("/",  function (req, res) {
         } else {
             let data = JSON.parse(body)
 
-            console.log("hey")
 
 
             if (data.main !== undefined) {
