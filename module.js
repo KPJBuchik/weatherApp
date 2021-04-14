@@ -33,17 +33,18 @@
         <p><%= error %></p>
       <% } %>
 
+
       <form action="/" method="post" id="search">
-        <input name="city" id="input" type="search" placeholder="enter a city" value="phoenix">
+        <input name="city" id="input" type="search" placeholder="enter a city">
     </div>
-  
+
     <% if(weather !== null){ %>
 
       <h5 id="city"><%= weather[0] %></h5>
 
     <h2 id="temp"><%= weather[1] %></h2>
 
-    <img  id="cloudy" class="weather-icon" src=<%= weather[9] %>>
+    <img  id="cloudy" class="weather-icon" src=<%= weather[2] %>>
 
     
 
@@ -53,46 +54,42 @@
 
   <div class="backdrop">
 
-    <h3 id="conditions">Mostly Cloudy</h3>
+    <h3 id="conditions"><%= weather[3] %></h3>
 
     <div id="squares">
       <div class="square">
         <p class="etc-weather">HUMIDITY</p>
-        <p id="humidity-results" class="etc-weather-results "><%= weather[2] %></p>
+        <p id="humidity-results" class="etc-weather-results "><%= weather[4] %></p>
       </div>
       <div class="square">
         <p class="etc-weather">SUNRISE</p>
-        <p id="sunrise-results" class="etc-weather-results "><%= weather[3] %></p>
+        <p id="sunrise-results" class="etc-weather-results "><%= weather[5] %></p>
       </div>
       <div class="square">
         <p class="etc-weather">SUNSET</p>
-        <p id="sunset-results" class="etc-weather-results "><%= weather[4] %></p>
+        <p id="sunset-results" class="etc-weather-results "><%= weather[6] %></p>
 
       </div>
       <div class="square">
         <p class="etc-weather">WIND</p>
-        <p id="wind-results" class="etc-weather-results "><%= weather[5] %></p>
+        <p id="wind-results" class="etc-weather-results "><%= weather[7] %></p>
 
       </div>
     </div>
     <div id="hi-lo">
-      H:<%= weather[6] %>
+      H:<%= weather[8] %> 
       <br>
-      L:<%= weather[7] %>
+      L:<%= weather[9] %>
+
     </div>
-    <% } %>
 
-    <div id="weekly-forecast" action="2" method="post">
-      <div class="ribbon">
-        <p id="weekday1" class="weekday">Monday</p>
-        <img class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
-        <img class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
-        <img class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
-        <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
-        <img class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+   
 
+      <div id="weekly-forecast" >
+        <div class="ribbon">
+          <p id="weekday1" class="weekday"> <%= weather[10] %></p>
+
+        <img class="tiny-sun forecast-icon" src=<%= weather[15] %>>
         <img class="ribbon ribbon-image" src="./assets/ribbon.png">
 
         <p id="high1" class="high-forecast">84</p>
@@ -101,14 +98,8 @@
 
       </div>
       <div class="ribbon">
-        <p id="weekday2" class="weekday">Monday</p>
-        <img class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
-        <img class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
-        <img class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
-        <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
-        <img class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+        <p id="weekday2" class="weekday"><%= weather[11] %></p>
+        <img class="tiny-sun forecast-icon" src=<%= weather[16] %>>
 
         <img class="ribbon ribbon-image" src="./assets/ribbon.png">
         <p id="high2" class="high-forecast">84</p>
@@ -116,15 +107,8 @@
 
       </div>
       <div class="ribbon">
-        <p id="weekday3" class="weekday">Monday</p>
-        <img class="forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
-        <img class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
-        <img class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
-        <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
-        <img class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+        <p id="weekday3" class="weekday"><%= weather[12] %></p>
+        <img class="forecast-icon" src=<%= weather[17] %>>
 
         <img class="ribbon ribbon-image" src="./assets/ribbon.png">
         <p id="high3" class="high-forecast">84</p>
@@ -133,31 +117,20 @@
       </div>
 
       <div class="ribbon">
-        <p id="weekday4" class="weekday">Monday</p>
-        <img class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
-        <img class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
-        <img class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
-        <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
-        <img class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+        <p id="weekday4" class="weekday"><%= weather[13] %></p>
+        <img class="tiny-sun forecast-icon" src=<%= weather[18] %>>
 
         <img class="ribbon ribbon-image" src="./assets/ribbon.png">
         <p id="high4" class="high-forecast">84</p>
         <p id="low4" class="low-forecast">81</p>
       </div>
       <div class="ribbon">
-        <p id="weekday5" class="weekday">Monday</p>
-        <img class="tiny-sun forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-cloudy forecast-icon" src="assets/tiny-clouds.png">
-        <img class="tiny-sunny forecast-icon" src="assets/tiny-sun.png">
-        <img class="tiny-rain forecast-icon" src="assets/tiny-rain.png">
-        <img class="tiny-clear-night forecast-icon" src="assets/tiny-night.png">
-        <img class="tiny-cloudy-night forecast-icon" src="assets/tiny-night-clouds.png">
-        <img class="tiny-snow forecast-icon" src="assets/tiny-snow.png">
+        <p id="weekday5" class="weekday"><%= weather[14] %></p>
+        <img class="tiny-sun forecast-icon" src=<%= weather[19] %>>
         <img class="ribbon ribbon-image" src="./assets/ribbon.png">
         <p id="high5" class="high-forecast">84</p>
         <p id="low5" class="low-forecast">81</p>
+        <% } %>
 
       </div>
 

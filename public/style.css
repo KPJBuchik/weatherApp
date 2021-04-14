@@ -94,6 +94,7 @@ top:-16vh;
 
 left:38vw;
 z-index:0;
+width:28vw;
 }
 
 
@@ -116,9 +117,9 @@ font-size:1vh;}
 .forecast-icon{position:absolute;
 margin-top:2vh;
 z-index:3;
-display:none}
 
-.tiny-sunnny{display:initial}
+}
+
 
 .high-forecast{
     margin-left:1.8vw;
