@@ -27,7 +27,8 @@
   <div id="toggle"><button id="dark-mode">toggle</button></div>
   <div id="current">
     <div id="location">
-      <% if(error !== null){ %>
+      <% if(typeof error !== "undefined" && error !== null) {  %>
+
         <p><%= error %></p>
       <% } %>
 
@@ -36,8 +37,7 @@
         <input name="city" id="input" type="search" placeholder="enter a city">
     </div>
 
-    <% if(weather !== null){ %>
-
+    <% if( weather !== undefined ){ %>
       <h5 id="city"><%= weather[0] %></h5>
 
     <h2 id="temp"><%= weather[1] %></h2>
