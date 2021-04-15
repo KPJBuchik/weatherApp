@@ -36,8 +36,7 @@
       <form action="/" method="post" id="search">
         <input name="city" id="input" type="search" placeholder="enter a city">
     </div>
-
-    <% if( weather !== undefined ){ %>
+    <% if(typeof weather !== null){ %>
       <h5 id="city"><%= weather[0] %></h5>
 
     <h2 id="temp"><%= weather[1] %></h2>
@@ -129,6 +128,7 @@
         <p id="high5" class="high-forecast"><%= weather[24] %></p>
         <p id="low5" class="low-forecast"><%= weather[29] %></p>
         <% } %>
+
 
       </div>
 

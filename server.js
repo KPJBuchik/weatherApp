@@ -12,6 +12,7 @@ global.dayNames = [
     'Saturday'
 
 ];
+var Promise = require("bluebird");
 
 const request = require('request');
 
@@ -20,7 +21,6 @@ const axios = require('axios').default;
 const bodyParser = require('body-parser');
 require('dotenv').config()
 var express = require("express");
-var router = express.Router()
 
 process.on('uncaughtException', function (err) {
     console.error(err);
@@ -42,34 +42,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static('public'));
-app.listen(PORT, function () {
-    console.log("App listening on PORT " + PORT);
 
-});
 
 
 
 
 app.get('/', function (req, res, next) {
-    res.render('index',);
-    console.log("zero")
-
-})
-
-
-
-
-
-
-app.post('/', function (req, res, next) {
     let apiKey = process.env.MY_KEY
 
-    let city = req.body.city
-    if (city === "" ) {
-        city = "phoenix"
-    }
 
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=phoenix&units=imperial&appid=${apiKey}`
 
     request(url, function (err, response, body) {
         if (err) {
@@ -77,8 +59,7 @@ app.post('/', function (req, res, next) {
 
         } else {
             let weather = JSON.parse(body)
-            if (weather.main == undefined || currentArray === undefined) {
-                city=phoenix
+            if (weather.main == undefined) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
 
@@ -162,12 +143,132 @@ app.post('/', function (req, res, next) {
                 currentArray.push(lowTemp);//9
 
                 console.log("first")
-                next();
+                res.render('index', {
+                    weather: currentArray,
+                    error: null
+                });
+               next();
 
 
             }
-
         }
+        
+
+    })
+
+}),
+
+
+
+
+
+
+app.post('/', function (req, res, next) {
+    let apiKey = process.env.MY_KEY
+
+    let city = req.body.city
+    if (city === "" ) {
+        city = "phoenix"
+    }
+
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
+
+    request(url, function (err, response, body) {
+        if (err) {
+            res.render('index', { weather: null, error: 'Error, please try again' });
+
+        } else {
+            let weather = JSON.parse(body)
+            if (weather.main == undefined) {
+                res.render('index', { weather: null, error: 'Error, please try again' });
+            } else {
+
+                let roundedTemp = `${Math.ceil(weather.main.temp)}` + "˚";
+                let location = `${(weather.name)}`
+                let humidity = `${Math.ceil(weather.main.humidity)}`
+                let condition = `${(weather.weather[0].main)}`
+                let timezone = weather.timezone
+
+                // display custom weather icons based on the icon number
+                let iconNumber = weather.weather[0].icon
+                var imgSrc = "/assets/" + iconNumber + '.png'; //this worked, just have to add duplicate pictures that correspond to the codes. 
+                let unixSunset = weather.sys.sunset;
+                const sunset = new Date((unixSunset + timezone) * 1000)
+                let sunsetHrs = sunset.getHours().toString();
+                let sunsetMinutes = sunset.getMinutes().toString();
+
+                let unixSunrise = weather.sys.sunrise;
+                const sunrise = new Date((unixSunrise + timezone) * 1000)
+                let sunriseHrs = sunrise.getHours()
+
+                let sunriseMinutes = sunrise.getMinutes()
+
+
+
+
+                //millitary time to standard time
+                let displaySunset;
+
+                if (sunsetHrs > 0 && sunsetHrs <= 12) {
+                    displaySunset = "" + sunsetHrs;
+                } else if (sunsetHrs > 12) {
+                    displaySunset = "" + (sunsetHrs - 12);
+                } else if (sunsetHrs == 0) {
+                    displaySunset = "12";
+                }
+
+                displaySunset += (sunsetMinutes < 10) ? ":0" + sunsetMinutes : ":" + sunsetMinutes;
+                if (sunsetMinutes.toString().length < 2) {
+                    sunsetMinutes = "0" + sunsetMinutes
+                }
+
+                displaySunset = sunsetHrs - 5 + ":" + sunsetMinutes
+                displaySunset += (sunsetHrs <= 12) ? " P.M." : " A.M.";
+
+
+                let displaySunrise;
+                if (sunriseHrs > 0 && sunriseHrs <= 12) {
+                    displaySunrise = "" + sunriseHrs;
+                } else if (sunriseHrs > 12) {
+                    displaySunrise = "" + (sunriseHrs - 12);
+                } else if (sunriseHrs == 0) {
+                    displaySunrise = "12";
+                }
+
+                displaySunrise += (sunriseMinutes < 10) ? ":0" + sunriseMinutes : ":" + sunriseMinutes;
+                if (sunriseMinutes.toString().length < 2) {
+                    sunriseMinutes = "0" + sunriseMinutes
+                }
+                displaySunrise = sunriseHrs - 17 + ":" + sunriseMinutes
+                displaySunrise += (sunriseHrs <= 12) ? " P.M." : " A.M.";
+
+
+
+
+
+
+                let highTemp = `${Math.ceil(weather.main.temp_max)}` + "˚";
+                let lowTemp = `${Math.ceil(weather.main.temp_min)}` + "˚";
+                let wind = `${(weather.wind.speed)}`
+
+                currentArray.push(location); //0
+                currentArray.push(roundedTemp); //1
+                currentArray.push(imgSrc); //2
+                currentArray.push(condition);//3
+                currentArray.push(humidity);//4
+                currentArray.push(displaySunrise);//5
+                currentArray.push(displaySunset);//6
+                currentArray.push(wind);//7
+                currentArray.push(highTemp);//8
+                currentArray.push(lowTemp);//9
+
+                console.log("first")
+                 next();
+
+
+            }
+        }
+        
 
     })
 
@@ -283,6 +384,7 @@ app.post('/', function (req, res, next) {
 
                     // }
                     console.log("second")
+                    console.log(err)
                     return currentArray.length = 0
 
                 }
@@ -297,3 +399,7 @@ app.post('/', function (req, res, next) {
 
 
 
+    app.listen(PORT, function () {
+        console.log("App listening on PORT " + PORT);
+    
+    });
