@@ -49,9 +49,9 @@ app.use(express.static('public'));
 
 app.get('/', function (req, res, next) {
     let apiKey = process.env.MY_KEY
+    city="phoenix"
 
-
-    let url = `http://api.openweathermap.org/data/2.5/weather?q=phoenix&units=imperial&appid=${apiKey}`
+    let url = `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${apiKey}`
 
     request(url, function (err, response, body) {
         if (err) {
@@ -143,20 +143,130 @@ app.get('/', function (req, res, next) {
                 currentArray.push(lowTemp);//9
 
                 console.log("first")
-                res.render('index', {
-                    weather: currentArray,
-                    error: null
-                });
-               next();
+            
+                next();
 
 
             }
         }
-        
+
 
     })
 
 }),
+    app.get("/", function (req, res, next) {
+        let apiKey = process.env.MY_KEY
+
+        city="phoenix"
+        let url = `http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&APPID=${apiKey}`
+
+        request(url, function (err, response, body) {
+            if (err) {
+                res.render('/', { data: null, error: 'Error, please try again' });
+
+            } else {
+                let data = JSON.parse(body)
+
+                if (data.main !== undefined) {
+                    res.render('/', { data: null, error: 'Error, please try again' });
+                } else {
+
+                    // for (let i = 0; i < data.list.length; i += 8) {
+                    res.locals.forecasteDay = data.list[0].dt_txt;
+                    let forecastDate = data.list[0].dt_txt;
+                    let d = new Date(forecastDate);
+                    let dayName = dayNames[d.getDay()];
+                    // display custom weather icons based on the icon number
+                    let smallIconNumber = data.list[0].weather[0].icon
+                    var smallImgSrc = "/assets/t" + smallIconNumber + '.png';
+                    let forecastHigh = Math.ceil(data.list[0].main.temp_max);
+                    let forecastLow = Math.ceil(data.list[4].main.temp_min)
+
+
+
+
+
+                    let forecastDate2 = data.list[8].dt_txt;
+                    let d2 = new Date(forecastDate2);
+                    let dayName2 = dayNames[d2.getDay()];
+                    let smallIconNumber2 = data.list[8].weather[0].icon
+                    var smallImgSrc2 = "/assets/t" + smallIconNumber2 + '.png';
+                    let forecastHigh2 = Math.ceil(data.list[8].main.temp_max)
+                    let forecastLow2 = Math.ceil(data.list[12].main.temp_min)
+
+
+                    let forecastDate3 = data.list[16].dt_txt;
+                    let d3 = new Date(forecastDate3);
+                    let dayName3 = dayNames[d3.getDay()];
+                    let smallIconNumber3 = data.list[16].weather[0].icon
+                    var smallImgSrc3 = "/assets/t" + smallIconNumber3 + '.png';
+                    let forecastHigh3 = Math.ceil(data.list[16].main.temp_max)
+                    let forecastLow3 = Math.ceil(data.list[20].main.temp_min)
+
+                    let forecastDate4 = data.list[24].dt_txt;
+                    let d4 = new Date(forecastDate4);
+                    let dayName4 = dayNames[d4.getDay()];
+                    let smallIconNumber4 = data.list[24].weather[0].icon
+                    var smallImgSrc4 = "/assets/t" + smallIconNumber4 + '.png';
+                    let forecastHigh4 = Math.ceil(data.list[24].main.temp_max)
+                    let forecastLow4 = Math.ceil(data.list[28].main.temp_min)
+
+                    let forecastDate5 = data.list[32].dt_txt;
+                    let d5 = new Date(forecastDate5);
+                    let dayName5 = dayNames[d5.getDay()];
+                    let smallIconNumber5 = data.list[32].weather[0].icon
+                    var smallImgSrc5 = "/assets/t" + smallIconNumber5 + '.png';
+                    let forecastHigh5 = Math.ceil(data.list[32].main.temp_max)
+                    let forecastLow5 = Math.ceil(data.list[36].main.temp_min)
+
+
+
+                    currentArray.push(dayName)//10,11,12,13,14
+                    currentArray.push(dayName2)//10,11,12,13,14
+                    currentArray.push(dayName3)//10,11,12,13,14
+                    currentArray.push(dayName4)//10,11,12,13,14
+                    currentArray.push(dayName5)//10,11,12,13,14
+
+
+                    currentArray.push(smallImgSrc)//15,16,17,18,19
+                    currentArray.push(smallImgSrc2)//15,16,17,18,19
+                    currentArray.push(smallImgSrc3)//15,16,17,18,19
+                    currentArray.push(smallImgSrc4)//15,16,17,18,19
+                    currentArray.push(smallImgSrc5)//15,16,17,18,19
+
+                    currentArray.push(forecastHigh)
+                    currentArray.push(forecastHigh2)
+                    currentArray.push(forecastHigh3)
+                    currentArray.push(forecastHigh4)
+                    currentArray.push(forecastHigh5)
+
+                    currentArray.push(forecastLow)
+                    currentArray.push(forecastLow2)
+                    currentArray.push(forecastLow3)
+                    currentArray.push(forecastLow4)
+                    currentArray.push(forecastLow5)
+
+
+
+
+                    console.log(currentArray)
+                
+
+                    // }
+                    res.render('index', {
+                        weather: currentArray,
+                        error: null
+                    });
+                    return currentArray.length=0;
+                }
+            }
+
+
+        })
+
+    }),
+
+
 
 
 
@@ -167,7 +277,7 @@ app.post('/', function (req, res, next) {
     let apiKey = process.env.MY_KEY
 
     let city = req.body.city
-    if (city === "" ) {
+    if (city === "") {
         city = "phoenix"
     }
 
@@ -263,12 +373,12 @@ app.post('/', function (req, res, next) {
                 currentArray.push(lowTemp);//9
 
                 console.log("first")
-                 next();
+                next();
 
 
             }
         }
-        
+
 
     })
 
@@ -293,8 +403,7 @@ app.post('/', function (req, res, next) {
 
 
 
-                if (data.main !== undefined) {
-                    city=phoenix
+                if (data.list[0].dt_text !== undefined) {
                     res.render('/', { data: null, error: 'Error, please try again' });
                 } else {
 
@@ -399,7 +508,7 @@ app.post('/', function (req, res, next) {
 
 
 
-    app.listen(PORT, function () {
-        console.log("App listening on PORT " + PORT);
-    
-    });
+app.listen(PORT, function () {
+    console.log("App listening on PORT " + PORT);
+
+});
