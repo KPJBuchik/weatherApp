@@ -24,7 +24,7 @@
 
   <!-- <h1>cool weather</h1>
     <input id="search"><button id="submit">Submit</button>  -->
-  <div id="toggle"><button id="dark-mode">toggle</button></div>
+  <div id="toggle">Dark Mode</div>
   <div id="current">
     <div id="location">
       <% if( error !== null) {  %>
@@ -56,7 +56,7 @@
     <div id="squares">
       <div class="square">
         <p class="etc-weather">HUMIDITY</p>
-        <p id="humidity-results" class="etc-weather-results "><%= weather[4] %></p>
+        <p id="humidity-results" class="etc-weather-results "><%= weather[4] %>%</p>
       </div>
       <div class="square">
         <p class="etc-weather">SUNRISE</p>
@@ -69,7 +69,7 @@
       </div>
       <div class="square">
         <p class="etc-weather">WIND</p>
-        <p id="wind-results" class="etc-weather-results "><%= weather[7] %></p>
+        <p id="wind-results" class="etc-weather-results "><%= weather[7] %> MPH</p>
 
       </div>
     </div>
@@ -83,6 +83,12 @@
    
 
       <div id="weekly-forecast" >
+
+        <div class="ribbon">
+      <img
+              class="ribbon ribbon-image" src="./assets/ribbon.png">
+
+      </div>
         <div class="ribbon">
           <p id="weekday1" class="weekday"> <%= weather[10] %></p>
 
@@ -132,17 +138,13 @@
 
       </div>
 
-      <!-- <div class="ribbon">
-                <p class="weekday">Monday</p> <img class="forecast-icon" src="assets/tiny-sun.png"><img
+      <div class="ribbon">
+                <img
                     class="ribbon ribbon-image" src="./assets/ribbon.png">
 
             </div>
 
-            <div class="ribbon">
-                <p class="weekday">Monday</p> <img class="forecast-icon" src="assets/tiny-sun.png"> <img
-                    class="ribbon ribbon-image" src="./assets/ribbon.png">
 
-            </div> -->
 
 
     </div>
