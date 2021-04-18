@@ -143,7 +143,7 @@ app.get('/', function (req, res, next) {
                 currentArray.push(lowTemp);//9
 
                 console.log("first")
-            
+
                 next();
 
 
@@ -191,8 +191,8 @@ app.get('/', function (req, res, next) {
                     let dayName2 = dayNames[d2.getDay()];
                     let smallIconNumber2 = data.list[8].weather[0].icon
                     var smallImgSrc2 = "/assets/t" + smallIconNumber2 + '.png';
-                    let forecastHigh2 = Math.ceil(data.list[8].main.temp_max)
-                    let forecastLow2 = Math.ceil(data.list[12].main.temp_min)
+                    let forecastHigh2 = Math.ceil(data.list[3].main.temp_max)
+                    let forecastLow2 = Math.ceil(data.list[5].main.temp_min)
 
 
                     let forecastDate3 = data.list[16].dt_txt;
@@ -246,6 +246,7 @@ app.get('/', function (req, res, next) {
                     currentArray.push(forecastLow4)
                     currentArray.push(forecastLow5)
 
+                    currentArray.push(data.city.country)
 
 
 
@@ -289,16 +290,18 @@ app.post('/', function (req, res, next) {
 
         } else {
             let weather = JSON.parse(body)
+            console.log(weather)
             if (weather.main == undefined) {
                 res.render('index', { weather: null, error: 'Error, please try again' });
             } else {
 
                 let roundedTemp = `${Math.ceil(weather.main.temp)}` + "˚";
                 let location = `${(weather.name)}`
+                let Country = weather.sys.country
                 let humidity = `${Math.ceil(weather.main.humidity)}`
                 let condition = `${(weather.weather[0].main)}`
                 let timezone = weather.timezone
-
+                
                 // display custom weather icons based on the icon number
                 let iconNumber = weather.weather[0].icon
                 var imgSrc = "/assets/" + iconNumber + '.png'; //this worked, just have to add duplicate pictures that correspond to the codes. 
@@ -371,6 +374,7 @@ app.post('/', function (req, res, next) {
                 currentArray.push(wind);//7
                 currentArray.push(highTemp);//8
                 currentArray.push(lowTemp);//9
+                console.log(weather)
 
                 console.log("first")
                 next();
@@ -482,7 +486,7 @@ app.post('/', function (req, res, next) {
                     currentArray.push(forecastLow4)
                     currentArray.push(forecastLow5)
 
-
+                    currentArray.push(data.city.country)
 
 
                     console.log(currentArray)
@@ -492,8 +496,8 @@ app.post('/', function (req, res, next) {
                     });
 
                     // }
-                    console.log("second")
                     console.log(err)
+                    console.log(data)
                     return currentArray.length = 0
 
                 }
