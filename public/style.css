@@ -212,7 +212,7 @@ box-shadow:1px 1px 2px black;}
 
 position:absolute;
 display:flex;
-margin-left:12.5vw;
+margin-left:22vw;
 margin-top:16vh;
 margin-right:22vw;
 
@@ -336,10 +336,10 @@ width:200px;}
 
         position:absolute;
         display:flex;
-        margin-left:-9vw;
+        margin-left:8vw;
         margin-top:22vh;
 
-        margin-right:22vw;
+        margin-right:8vw;
         
         }
         
@@ -418,7 +418,8 @@ left:75vw;}
 @media only screen and (max-width: 375px) {
 .backdrop{margin-left:.5vw;}
 #weekly-forecast{
-    margin-left:-12vw;
+    margin-left:4vw;
+    margin-right:4vw
 
 }
 
@@ -438,7 +439,7 @@ left:75vw;}
     }
 #hi-lo{margin-top:0px;}
 #search_submit{
-  right:10vw;
+  right:5vw;
   margin-top:1vh;
   }
 
