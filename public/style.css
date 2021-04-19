@@ -416,7 +416,7 @@ left:75vw;}
 
 
 @media only screen and (max-width: 375px) {
-
+.backdrop{margin-left:.5vw;}
 #weekly-forecast{
     margin-left:-12vw;
 
@@ -438,7 +438,7 @@ left:75vw;}
     }
 #hi-lo{margin-top:0px;}
 #search_submit{
-  right:5vw;
+  right:10vw;
   margin-top:1vh;
   }
 
