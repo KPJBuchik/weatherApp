@@ -62,7 +62,7 @@ z-index:0;
   }
   
   input[type="search"]:focus {
-    width: 20vw;
+    width: 200px;
     z-index: 1;
     border-bottom: 1px solid #BBB;
     cursor: text;
@@ -377,7 +377,7 @@ width:200px;}
 
 
         .weekday{position:absolute;
-            margin-left:4vw;
+            margin-left:.4vw;
             z-index:3;
         font-size:1.5vh;
     font-weight:bold;}
@@ -405,8 +405,7 @@ left:75vw;}
 
 
 @media only screen and (min-width: 200px) {
-.backdrop{margin-left:5vw;
-margin-right:1vw;}
+.backdrop{margin-left:5vw;}
 #weekly-forecast{
     margin-left:4vw;
     margin-right:4vw
