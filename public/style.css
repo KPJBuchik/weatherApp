@@ -3,8 +3,10 @@ body{background-color:#616262;
 max-height:100vh;
 font-family:Barlow;
 color:white;
+overflow-y:hidden;
+overflow-x:hidden;
 }
-
+#toggle{opacity:0;}
 #city{margin-left:44vw;
 margin-top:-2vh;
 position: absolute;
@@ -46,7 +48,7 @@ z-index:0;
     position: absolute;
     top: -10vh;
     right: -5vw;
-    margin-right:2vw;
+    margin-right:20px;
     background: none;
     z-index: 6;
     transition: width .4s cubic-bezier(0.000, 0.795, 0.000, 1.000);
@@ -103,6 +105,7 @@ font-size:1vh;}
 .forecast-icon{position:absolute;
 margin-top:2vh;
 z-index:3;
+margin-left:.5vw;
 
 }
 
@@ -272,6 +275,9 @@ margin-right:22vw;
 
 .etc-weather-results{font-size:12px;
 margin-top:-12px}
+
+.etc-weather{font-size:1.5vh;
+margin-left:3vw;}
 #city{font-size:4vh;
     margin-left:34vw;
     margin-top:-24vh;
@@ -430,6 +436,10 @@ left:75vw;}
     left:14vw;
     z-index:0;
     }
-    
+#hi-lo{margin-top:0px;}
+#search_submit{
+  right:5vw;
+  margin-top:1vh;
+  }
 
 }
