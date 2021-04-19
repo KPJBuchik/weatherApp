@@ -32,9 +32,10 @@
         <p><%= error %></p>
       <% } %>
 
-
       <form action="/" method="post" id="search">
-        <input name="city" id="input" type="search" placeholder="enter a city">
+        <input name="city" id="input" type="search" >
+        <input id="search_submit" value="Rechercher" type="submit">
+
     </div>
     <% if(weather !== null){ %>
       <h5 id="city"><%= weather[0] %>, <%= weather[30] %> </h5>
