@@ -6,8 +6,11 @@ color:white;
 overflow-y:hidden;
 overflow-x:hidden;
 }
+
 #toggle{opacity:0;}
+
 #city{margin-left:44vw;
+margin-right:44vw;
 margin-top:-2vh;
 position: absolute;
 z-index:6}
@@ -19,15 +22,14 @@ position:relative;
 top:-10vh;
 
 left:38vw;
+right:38vw;
 z-index:0;
 }
 
 
 #location {
     margin: 50px 100px;
-    display: inline-block;
     position: relative;
-    height: 60px;
     float: right;
     padding: 0;
     position: relative;
@@ -87,10 +89,11 @@ z-index:0;
   input[type="submit"]:hover {
     opacity: 0.8;
   }
-#conditions{font-size:1.5vw;
+#conditions{font-size:3vh;
 position:absolute;
 margin-top:12vh;
-margin-left:38vw;}
+margin-left:38vw;
+margin-right:38vw;}
 
 .ribbon{   height:40vh;
     width:5.5vw;
@@ -98,7 +101,7 @@ margin-left:38vw;}
     
 }  
 .weekday{position:absolute;
-    margin-left:1.3vw;
+    margin-left:.4vw;
     z-index:3;
 font-size:1vh;}
 
@@ -106,26 +109,32 @@ font-size:1vh;}
 margin-top:2vh;
 z-index:3;
 margin-left:.5vw;
+margin-right:.5vw;
 
 }
 
 
 .high-forecast{
     margin-left:1.8vw;
+    margin-right:1.8vw;
     position:absolute;
 margin-top:9vh;
+font-size:2vh;
+
 }
 .low-forecast{
     margin-left:1.8vw;
-
+    margin-right:1.8vw;
     position:absolute;
     margin-top:12vh;
     font-size:2vh;
     }
-.etc-weather{margin-left:.5vw;
+
+.etc-weather{margin-left:1vw;
+margin-right:1vw;
 font-family:Barlow;
-font-size:1vw;
-margin-left:1vw;}
+font-size:2vh;
+}
 .etc-weather-results{
 font-size:2vh;
 margin-left:2vw;
@@ -143,39 +152,7 @@ width:5.5vw;
 } 
 
 
-.accordion{width:2%;
-height:36vh;}
 
-
-
-#pointer {
-    width: 200px;
-    height: 40px;
-    position: relative;
-    background: red;
-  }
-  #pointer:after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 20px solid white;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-  }
-  #pointer:before {
-    content: "";
-    position: absolute;
-    right: -20px;
-    bottom: 0;
-    width: 0;
-    height: 0;
-    border-left: 20px solid red;
-    border-top: 20px solid transparent;
-    border-bottom: 20px solid transparent;
-  }
 
 #temp{
 position:relative;
@@ -193,6 +170,7 @@ z-index:4;
 position:relative;
 display:flex;
 left:27.8vw;
+right:27.8vw;
 top:15vh;
 
 z-index:5;
@@ -210,7 +188,7 @@ border-color:#707070;
 box-shadow:1px 1px 2px black;} 
 #weekly-forecast{
 
-position:absolute;
+position:relative;
 display:flex;
 margin-left:22vw;
 margin-top:16vh;
@@ -225,6 +203,7 @@ margin-right:22vw;
     width:90vw;
     height:50vh;
     margin-left:5vw;
+    margin-right:5vw;
     border-radius:81px;
     border-style:solid;
     border-color:#707070;
@@ -238,6 +217,7 @@ margin-right:22vw;
 #hi-lo{
     position:absolute;
     margin-left:80vw;
+    
     margin-top:-10vh;
 }
 
@@ -277,13 +257,17 @@ margin-right:22vw;
 margin-top:-12px}
 
 .etc-weather{font-size:1.5vh;
-margin-left:3vw;}
+margin-left:3vw;
+margin-right:3vw;}
+
 #city{font-size:4vh;
     margin-left:34vw;
+    margin-right:34vw;
     margin-top:-24vh;
     position: absolute;
     z-index:-3;
 width:200px;}
+
     #current{position:absolute;
         top:25vh;}
 
@@ -291,6 +275,7 @@ width:200px;}
             position:relative;
             top:-20vh;
             left:25vw;
+            right:25vw;
             z-index:0;
             width: initial;
             }
@@ -300,6 +285,7 @@ width:200px;}
         width:90vw;
         height:56vh;
         margin-left:5vw;
+        margin-right:5vw;
         border-radius:29px;
         border-style:solid;
         border-color:#707070;
@@ -315,6 +301,7 @@ width:200px;}
     position:relative;
     display:flex;
     left:16vw;
+    right:16vw;
     top:20vh;
     
     z-index:5;
@@ -362,6 +349,7 @@ width:200px;}
       -webkit-text-fill-color: transparent;
       -webkit-background-clip: text;
       margin-left:26vw;
+      
     z-index:4;
     }
 
@@ -370,7 +358,8 @@ width:200px;}
     #conditions{font-size:5vh;
         position:absolute;
         margin-top:14vh;
-        margin-left:33vw;;}
+        margin-left:33vw;
+    margin-right:33vw;}
 
 
 
@@ -415,14 +404,14 @@ left:75vw;}
 }
 
 
-@media only screen and (max-width: 375px) {
+@media only screen and (max-width: 400px) {
 .backdrop{margin-left:.5vw;}
 #weekly-forecast{
     margin-left:4vw;
     margin-right:4vw
 
 }
-
+#city{margin-left:40vw;}
 #squares{left:8vw;}
 
 
@@ -437,10 +426,11 @@ left:75vw;}
     left:14vw;
     z-index:0;
     }
-#hi-lo{margin-top:0px;}
+#hi-lo{margin-top:0;
+margin-left:5vw;}
 #search_submit{
-  right:5vw;
-  margin-top:1vh;
+  right:85vw;
+  margin-top:2vh;
   }
 
 }
