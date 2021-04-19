@@ -415,7 +415,7 @@ left:75vw;}
 }
 
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 375px) {
 
 #weekly-forecast{
     margin-left:-12vw;
