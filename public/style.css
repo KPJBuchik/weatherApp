@@ -404,8 +404,8 @@ left:75vw;}
 }
 
 
-@media only screen and (max-width: 300px) {
-.backdrop{margin-left:5vw;}
+@media only screen and (max-width: 375px) {
+.backdrop{margin-left:1.2vw;}
 #weekly-forecast{
     margin-left:4vw;
     margin-right:4vw
