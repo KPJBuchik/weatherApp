@@ -6,17 +6,16 @@ global.dayNames = [
     'Sunday',
     'Monday',
     'Tuesday',
-    'Wednesday',
+    'Wednes.',
     'Thursday',
     'Friday',
     'Saturday'
 
 ];
-var Promise = require("bluebird");
 
 const request = require('request');
 
-const axios = require('axios').default;
+var NodeGeocoder = require('node-geocoder');
 
 const bodyParser = require('body-parser');
 require('dotenv').config()
@@ -42,9 +41,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static('public'));
-
-
-
 
 
 app.get('/', function (req, res, next) {
@@ -143,7 +139,6 @@ app.get('/', function (req, res, next) {
                 currentArray.push(lowTemp);//9
 
                 console.log("first")
-
                 next();
 
 
@@ -272,8 +267,6 @@ app.get('/', function (req, res, next) {
 
 
 
-
-
 app.post('/', function (req, res, next) {
     let apiKey = process.env.MY_KEY
 
@@ -377,6 +370,7 @@ app.post('/', function (req, res, next) {
                 console.log(weather)
 
                 console.log("first")
+
                 next();
 
 
