@@ -1,3 +1,3 @@
 # weatherApp
 
-![Main Page](/assets/broswer-screen.png)
+![Main Page](./public/assets/broswer-screen.png)
