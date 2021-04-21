@@ -1,17 +1,3 @@
-global.currentArray = []
-
-
-
-global.dayNames = [
-    'Sunday',
-    'Monday',
-    'Tuesday',
-    'Wednes.',
-    'Thursday',
-    'Friday',
-    'Saturday'
-
-];
 
 const request = require('request');
 
@@ -30,7 +16,6 @@ process.on('uncaughtException', function (err) {
 
 var app = express();
 var PORT = process.env.PORT || 8081;
-console.log("MY_KEY: " + process.env.MY_KEY);
 
 app.set('view engine', 'ejs')
 
@@ -42,7 +27,19 @@ app.use(express.json());
 
 app.use(express.static('public'));
 
+global.currentArray = []
 
+global.dayNames = [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednes.',
+    'Thursday',
+    'Friday',
+    'Saturday'
+
+];
+//loads window with query for phoenix weather
 app.get('/', function (req, res, next) {
     let apiKey = process.env.MY_KEY
     city="phoenix"
@@ -253,6 +250,7 @@ app.get('/', function (req, res, next) {
                         weather: currentArray,
                         error: null
                     });
+                    //clears the array after a search
                     return currentArray.length=0;
                 }
             }
@@ -367,7 +365,6 @@ app.post('/', function (req, res, next) {
                 currentArray.push(wind);//7
                 currentArray.push(highTemp);//8
                 currentArray.push(lowTemp);//9
-                console.log(weather)
 
                 console.log("first")
 
@@ -490,8 +487,7 @@ app.post('/', function (req, res, next) {
                     });
 
                     // }
-                    console.log(err)
-                    console.log(data)
+                
                     return currentArray.length = 0
 
                 }
