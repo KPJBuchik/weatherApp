@@ -18,6 +18,6 @@
 
 ![Snow Icon](public/assets/t13d.png)
 
-![Sun Icon](public/assets/t13d.png)
+![Sun Icon](public/assets/sunglasses.png)
 
 
