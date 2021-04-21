@@ -383,13 +383,13 @@ width:200px;}
 @media only screen and (max-width: 450px) {
 .backdrop{margin-left:4w;}
 #weekly-forecast{
-    margin-left:4vw;
+    margin-left:4.5vw;
     margin-right:4vw
 
 }
 #city{margin-left:30vw;
 margin-top:-39vh;}
-#squares{left:8vw;}
+#squares{left:10vw;}
 
 
 #conditions{margin-left:30vw;}
@@ -406,6 +406,8 @@ margin-top:-39vh;}
 #hi-lo{margin-top:0;
 margin-left:5vw;}
 
-
+input[type=search] {
+    top:-30vh;
+}
 
 }
