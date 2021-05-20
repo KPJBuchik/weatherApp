@@ -412,10 +412,10 @@ input[type=search] {
 }
 
 }
-
+/* 
 @media only screen and (min-width: 450px) {
     #city{margin-left:32vw;
         margin-top:-25vh;
         z-index:10;}
 
-}
+} */
